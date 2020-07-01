@@ -35,5 +35,9 @@ iguales , de forma oblicua, horizontal o vertical
         - Sin parametros de entrada
         - Devuelve un json con los calculos  { "count_human_dna": 0,"count_mutant_dna": 0, "ratio": 0}
 
-3. En la nube la aplicaciones esta en: https://herokuapp.com/
+3. En la nube la aplicaciones esta en: https://xmenmeli.herokuapp.com/ 
+
+        - POST https://xmenmeli.herokuapp.com/mutant/
+        - GET https://xmenmeli.herokuapp.com/stats
+        
 4. En la evaluacion en sonarqube resulto con mas de 85% de coverage
