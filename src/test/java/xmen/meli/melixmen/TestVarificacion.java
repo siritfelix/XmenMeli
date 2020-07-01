@@ -29,9 +29,19 @@ public class TestVarificacion {
 
     @Test
     void VerificarNoMutante() {
-        String[] dna = { "cccccc", "acacac", "cacaca", "tgtgtg", "tatata", "ccacca" };
+       // String[] dna = { "cccccc", "acacac", "cacaca", "tgtgtg", "tatata", "ccacca" };
+        String[] dna = {"qACCCC", "AAGTGF", "TTATGT", "AGAAAA", "AAAATA", "TCACTG"};
         verificacion = new Verificacion();
         assertEquals(false, verificacion.EsMutante(dna));
+
+    }
+    @Test
+    void VerificarEsValido() {
+       // String[] dna = { "cccccc", "acacac", "cacaca", "tgtgtg", "tatata", "ccacca" };
+        String[] dna = {"qAbCCCC", "AAGTGF", "TTATGT", "AGAAAA", "AAAATA", "TCACTG"};
+        List<String> dnaTLista = Arrays.asList(dna); 
+        verificacion = new Verificacion();
+        assertEquals(false, verificacion.esValido(dnaTLista));
 
     }
 

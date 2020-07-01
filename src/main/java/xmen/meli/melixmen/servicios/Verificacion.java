@@ -14,7 +14,7 @@ public class Verificacion implements IVerificacion {
     private String[] dna;
     private List<String> dnaList = new ArrayList<>();
     private Map<String, Boolean> letras = new HashMap<String, Boolean>();
-    private Boolean esVal = false;
+    private Boolean esVal = true;
     private Integer contador;
 
     public Verificacion() {
@@ -30,13 +30,17 @@ public class Verificacion implements IVerificacion {
     public Boolean EsMutante(String[] dna) {
         this.dna = dna;
         this.contador = 0;
-
+        this.esVal = true;
+        this.letras.put("AAAA", false);
+        this.letras.put("TTTT", false);
+        this.letras.put("CCCC", false);
+        this.letras.put("GGGG", false);
         this.dnaList = Arrays.asList(dna);
         ListIterator<String> i = dnaList.listIterator();
         while (i.hasNext()) {
             i.set(i.next().toUpperCase());
         }
-        if (this.esValido() == false)
+        if (this.esValido(this.dnaList) == false)
             return false;
         BuscarSecuencia(this.dnaList);// Busqueda horizonal
         this.dnaList = diagonales(this.dna);
@@ -52,15 +56,15 @@ public class Verificacion implements IVerificacion {
             return false;
     }
 
-    public Boolean esValido() {
+    public Boolean esValido(List<String> lista) {
         Integer filas;
-        filas = this.dnaList.size();
-        this.dnaList.stream().forEach(dnastr -> {
+        filas = lista.size();
+        lista.stream().forEach(dnastr -> {
             if (dnastr.length() != filas || dnastr.matches(".*[^ATCG].*"))
-                this.esVal = false;
-            else
-                this.esVal = true;
+                this.esVal = false;    
+                
         });
+
         return this.esVal;
     }
 
