@@ -7,8 +7,6 @@ import org.springframework.web.reactive.function.BodyInserters;
 
 import xmen.meli.melixmen.persistencia.entidades.Humano;
 
-
-
 @ApiTestConfig
 public class ApiTest {
     @Autowired
@@ -23,7 +21,7 @@ public class ApiTest {
 
     @Test
     void guardarForbidden() {
-        String[] dna = { "cccccc", "acacac", "cacaca", "tgtgtg", "tatata", "ccacca" };
+        String[] dna = { "Cccccc", "acacac", "cacaca", "tgtgtg", "tatata", "ccacca" };
         Humano humano = new Humano(null, dna, null);
         webTestClient.post().uri("/mutant/").body(BodyInserters.fromValue(humano)).exchange().expectStatus()
                 .isForbidden();
